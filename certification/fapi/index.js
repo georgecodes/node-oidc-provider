@@ -99,7 +99,7 @@ const fapi = new Provider(ISSUER, {
   clientDefaults: {
     default_acr_values: ['urn:mace:incommon:iap:silver'],
     authorization_signed_response_alg: 'PS256',
-    grant_types: ['implicit', 'authorization_code', 'refresh_token'],
+    grant_types: ['implicit', 'authorization_code', 'refresh_token', 'client_credentials'],
     response_types: ['code', 'code id_token'],
     id_token_signed_response_alg: 'PS256',
     request_object_signing_alg: 'PS256',
@@ -108,6 +108,7 @@ const fapi = new Provider(ISSUER, {
   },
   clockTolerance: 5,
   features: {
+    clientCredentials: { enabled: true },
     ciba: {
       enabled: true,
       processLoginHint(ctx, loginHint) {
